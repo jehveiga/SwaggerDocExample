@@ -16,7 +16,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Config\Swagger\" />
 		<Folder Include="Controllers\" />
 		<Folder Include="Dtos\ViewModel\" />
 	</ItemGroup>
