@@ -1,4 +1,5 @@
 using SwaggerDocExample.Config.ApiVersion;
+using SwaggerDocExample.Config.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,16 +12,12 @@ builder.Services.AddEndpointsApiExplorer();
 // Adicionando classes de configuração de versionamento e Swagger personalizado
 builder.Services.ConfigureApiVersioning();
 
-builder.Services.AddSwaggerGen();
+builder.Services.SwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.SwaggerUi();
 
 app.UseHttpsRedirection();
 
