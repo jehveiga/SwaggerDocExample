@@ -1,4 +1,4 @@
-﻿namespace SwaggerDocExample.Dtos.InputModel
+﻿namespace SwaggerDocExample.Dtos.InputModels
 {
     public class AlunoInputModel
     {
