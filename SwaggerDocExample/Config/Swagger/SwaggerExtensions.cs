@@ -25,7 +25,7 @@ namespace SwaggerDocExample.Config.Swagger
                 {
                     foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions.Reverse())
                     {
-                        options.SwaggerEndpoint($"/swagger/{description.GroupName}.swagger.json", description.GroupName.ToUpperInvariant());
+                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                     }
                 });
             }

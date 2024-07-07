@@ -6,10 +6,8 @@ using System.Reflection;
 
 namespace SwaggerDocExample.Config.Swagger
 {
-    /// <summary>
     /// IApiVersionDescriptionProvider através do nosso construtor, 
     /// ela servirá para que tenhamos disponível de maneira automática todas as versões que temos na nossa API pois nela temos uma lista das mesmas.
-    /// </summary>
     public class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
     {
         private readonly IApiVersionDescriptionProvider _provider;

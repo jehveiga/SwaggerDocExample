@@ -1,7 +1,8 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SwaggerDocExample.Models;
+using SwaggerDocExample.Dtos.InputModels;
+using SwaggerDocExample.Dtos.ViewModels;
 using SwaggerDocExample.Util;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net.Mime;
@@ -17,7 +18,7 @@ namespace SwaggerDocExample.Controllers.V2
     public class AlunosController : ControllerBase
     {
         [HttpGet]
-        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(IEnumerable<Aluno>))]
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(IEnumerable<AlunoViewModel>))]
         [SwaggerResponse(StatusCodes.Status404NotFound)]
         [SwaggerOperation(Summary = "Obter todos os alunos", Description = "Retorna uma lista com todos os alunos")]
         public ActionResult ObterAlunos()
@@ -26,7 +27,7 @@ namespace SwaggerDocExample.Controllers.V2
         }
 
         [HttpGet("{id:guid}")]
-        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(Aluno))]
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(AlunoViewModel))]
         [SwaggerResponse(StatusCodes.Status404NotFound)]
         [SwaggerOperation(Summary = "Obter aluno por id", Description = "Retorna um aluno conforme id informado no path")]
         public ActionResult ObterAlunoPorId(Guid id)
@@ -35,10 +36,10 @@ namespace SwaggerDocExample.Controllers.V2
         }
 
         [HttpPost]
-        [SwaggerResponse(StatusCodes.Status201Created, Type = typeof(Aluno))]
+        [SwaggerResponse(StatusCodes.Status201Created, Type = typeof(AlunoViewModel))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
         [SwaggerOperation(Summary = "Criar novo aluno", Description = "Valida e cria novo aluno no banco de dados.")]
-        public ActionResult CriarNovoAluno(Aluno aluno)
+        public ActionResult CriarNovoAluno(AlunoInputModel aluno)
         {
             return Ok();
         }
@@ -47,7 +48,7 @@ namespace SwaggerDocExample.Controllers.V2
         [SwaggerResponse(StatusCodes.Status204NoContent)]
         [SwaggerResponse(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
         [SwaggerOperation(Summary = "Atualizar aluno", Description = "Atualiza registro do aluno no banco de daddos.")]
-        public ActionResult AtualizarAluno(Guid id, Aluno aluno)
+        public ActionResult AtualizarAluno(Guid id, AlunoInputModel aluno)
         {
             return NoContent();
         }
