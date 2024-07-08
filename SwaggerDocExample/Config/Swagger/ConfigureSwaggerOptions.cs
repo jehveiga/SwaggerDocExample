@@ -70,7 +70,7 @@ namespace SwaggerDocExample.Config.Swagger
                 Contact = new OpenApiContact
                 {
                     Name = "Meu email de contato",
-                    Email = "mailto:meu_email@email.com"
+                    Email = "meu_email@email.com"
                 },
                 License = new OpenApiLicense
                 {
