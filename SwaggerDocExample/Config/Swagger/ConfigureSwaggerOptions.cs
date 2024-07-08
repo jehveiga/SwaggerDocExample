@@ -24,6 +24,8 @@ namespace SwaggerDocExample.Config.Swagger
 
         public void Configure(SwaggerGenOptions options)
         {
+            options.EnableAnnotations(); // Habilitar anotações
+
             foreach (var description in _provider.ApiVersionDescriptions)
             {
                 options.SwaggerDoc(description.GroupName, CreateVersionInfo(description));
