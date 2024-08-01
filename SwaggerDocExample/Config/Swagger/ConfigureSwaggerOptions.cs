@@ -87,10 +87,7 @@ namespace SwaggerDocExample.Config.Swagger
                     {
                         Type = ReferenceType.SecurityScheme,
                         Id = "Bearer"
-                    },
-                    Scheme = "oauth2",
-                    Name = "Bearer",
-                    In = ParameterLocation.Header,
+                    }
                 },
                 Array.Empty<string>()
                 }

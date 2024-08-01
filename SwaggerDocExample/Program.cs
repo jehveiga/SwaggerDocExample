@@ -1,7 +1,9 @@
 using SwaggerDocExample.Config.ApiVersion;
 using SwaggerDocExample.Config.Swagger;
+using SwaggerDocExample.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -13,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.ConfigureApiVersioning();
 
 builder.Services.SwaggerGen();
+builder.Services.AddConfigAuthentication(configuration);
 
 var app = builder.Build();
 
