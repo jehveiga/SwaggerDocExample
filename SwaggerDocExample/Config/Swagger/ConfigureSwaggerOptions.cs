@@ -31,34 +31,11 @@ namespace SwaggerDocExample.Config.Swagger
                 options.SwaggerDoc(description.GroupName, CreateVersionInfo(description));
             }
 
+            AddSecurityConfig(options);
+
             var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
             options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
-
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-            {
-                Description = "Insira o token no padrão: Bearer {seu token}",
-                Name = "Authorization",
-                Scheme = "Bearer",
-                BearerFormat = "JWT",
-                In = ParameterLocation.Header,
-                Type = SecuritySchemeType.ApiKey
-            });
-
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                new OpenApiSecurityScheme
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                },
-                Array.Empty<string>()
-                }
-            });
         }
 
         private static OpenApiInfo CreateVersionInfo(ApiVersionDescription description)
@@ -87,6 +64,37 @@ namespace SwaggerDocExample.Config.Swagger
             }
 
             return info;
+        }
+
+        private void AddSecurityConfig(SwaggerGenOptions options)
+        {
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Description = "Insira o token no padrão: Bearer {seu token}",
+                Name = "Authorization",
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.ApiKey
+            });
+
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    },
+                    Scheme = "oauth2",
+                    Name = "Bearer",
+                    In = ParameterLocation.Header,
+                },
+                Array.Empty<string>()
+                }
+            });
         }
     }
 }

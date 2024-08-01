@@ -22,7 +22,8 @@ namespace SwaggerDocExample.Controllers.V1
         [SwaggerOperation(Summary = "Obter todos os alunos", Description = "Retorna uma lista com todos os alunos")]
         public ActionResult ObterAlunos()
         {
-            return Ok();
+            return BadRequest();
+            //return Ok();
         }
 
         [HttpGet("{id:guid}")]
