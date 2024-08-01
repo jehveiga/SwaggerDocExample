@@ -9,7 +9,6 @@ using System.Net.Mime;
 
 namespace SwaggerDocExample.Controllers.V1
 {
-    [Authorize]
     [ApiController]
     [ApiVersion("1", Deprecated = true)]
     [Route("[controller]/v{version:apiVersion}/")]
@@ -22,8 +21,7 @@ namespace SwaggerDocExample.Controllers.V1
         [SwaggerOperation(Summary = "Obter todos os alunos", Description = "Retorna uma lista com todos os alunos")]
         public ActionResult ObterAlunos()
         {
-            return BadRequest();
-            //return Ok();
+            return Ok();
         }
 
         [HttpGet("{id:guid}")]

@@ -1,4 +1,6 @@
-﻿namespace SwaggerDocExample.Dtos.InputModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SwaggerDocExample.Dtos.InputModels
 {
     public class AlunoInputModel
     {
@@ -12,6 +14,7 @@
         /// Primeiro nome do aluno
         /// </summary>
         /// <example>Bianca</example>
+        [Required(ErrorMessage = "O nome é requerido")]
         public string PrimeiroNome { get; set; } = string.Empty;
 
         /// <summary>
@@ -35,7 +38,7 @@
         /// <summary>
         /// Data de nascimento
         /// </summary>
-        /// <example>1/1/0001 12:00:00 AM</example>
+        /// <example>1/1/0001</example>
         public DateTime DataNascimento { get; set; }
     }
 }
